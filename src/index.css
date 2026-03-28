@@ -1,0 +1,71 @@
+/* Reset et polices */
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  user-select: none;
+}
+
+body {
+  font-family: 'Quicksand', 'Comic Neue', sans-serif;
+  background: linear-gradient(145deg, #b8e1fc 0%, #f5f7fa 100%);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+#root {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.app {
+  background-color: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(4px);
+  border-radius: 3rem;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+  padding: 2rem;
+  min-height: 600px;
+  transition: all 0.3s ease;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+  background: #f4c542;
+  color: #2d2b1f;
+  font-weight: bold;
+  font-size: 1.5rem;
+  padding: 0.8rem 1.5rem;
+  border-radius: 60px;
+  box-shadow: 0 8px 0 #b4621a;
+  transition: transform 0.1s ease, box-shadow 0.1s ease;
+}
+
+button:active {
+  transform: translateY(4px);
+  box-shadow: 0 4px 0 #b4621a;
+}
+
+.game-container {
+  background: #fff9e8;
+  border-radius: 2rem;
+  padding: 1.5rem;
+  box-shadow: inset 0 1px 4px rgba(0,0,0,0.05), 0 10px 20px rgba(0,0,0,0.1);
+  margin-top: 1rem;
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+.bounce {
+  animation: bounce 0.5s ease;
+}
