@@ -153,22 +153,22 @@ export default function LabyrinthGame({ onComplete }) {
       )}
 
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1rem' }}>
-        <h2>Aide Haiky à rejoindre sa maison 🏠</h2>
-        <div style={{ fontSize: '2rem', fontWeight: 'bold', color: timeLeft <= 5 ? 'red' : '#2D5A27' }}>
-          ⏱️ {timeLeft}s
-        </div>
+       <h2 style={{ fontSize: 'clamp(1.2rem, 5vw, 1.8rem)' }}>Aide Haiky à rejoindre sa maison 🏠</h2>
+<div style={{ fontSize: 'clamp(1.5rem, 6vw, 2rem)', fontWeight: 'bold', color: timeLeft <= 5 ? 'red' : '#2D5A27' }}>
+  ⏱️ {timeLeft}s
+</div>
       </div>
 
-      <div style={{
-        display: 'grid',
-        gridTemplateColumns: `repeat(${SIZE}, 70px)`,
-        gap: '5px',
-        justifyContent: 'center',
-        margin: '2rem auto',
-        background: '#d9c8a9',
-        padding: '1rem',
-        borderRadius: '1rem'
-      }}>
+     <div style={{
+  display: 'grid',
+  gridTemplateColumns: `repeat(${SIZE}, minmax(40px, 70px))`, // ← colonnes flexibles
+  gap: 'clamp(2px, 1.5vw, 5px)',                              // ← écart adaptatif
+  justifyContent: 'center',
+  margin: 'clamp(1rem, 4vw, 2rem) auto',                      // ← marge responsive
+  background: '#d9c8a9',
+  padding: 'clamp(0.5rem, 2vw, 1rem)',                        // ← padding adaptatif
+  borderRadius: '1rem'
+}}>
         {[...Array(SIZE)].map((_, row) =>
           [...Array(SIZE)].map((_, col) => {
             const isStart = row === START.row && col === START.col
@@ -192,20 +192,21 @@ export default function LabyrinthGame({ onComplete }) {
               <div
                 key={`${row}-${col}`}
                 onClick={() => handleCellClick(row, col)}
-                style={{
-                  width: '70px',
-                  height: '70px',
-                  backgroundColor: bgColor,
-                  border: '2px solid #b46f2e',
-                  borderRadius: '12px',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  fontSize: '2rem',
-                  cursor: (obstacle || !gameActive || modalOpen) ? 'default' : 'pointer',
-                  transition: '0.1s',
-                  opacity: (obstacle || (!gameActive && !modalOpen)) ? 0.6 : 1
-                }}
+            style={{
+ width: 'clamp(30px, 8vw, 55px)',
+height: 'clamp(30px, 8vw, 55px)',         // ← largeur max 70px, sinon 15% de la largeur écran
+          // ← idem pour hauteur
+  backgroundColor: bgColor,
+  border: '2px solid #b46f2e',
+  borderRadius: '12px',
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+  fontSize: 'clamp(1.2rem, 5vw, 2rem)', // ← taille du contenu (🐒, 🏠, etc.)
+  cursor: (obstacle || !gameActive || modalOpen) ? 'default' : 'pointer',
+  transition: '0.1s',
+  opacity: (obstacle || (!gameActive && !modalOpen)) ? 0.6 : 1
+}}
               >
                 {content}
               </div>

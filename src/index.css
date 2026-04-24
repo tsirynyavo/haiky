@@ -69,3 +69,62 @@ button:active {
 .bounce {
   animation: bounce 0.5s ease;
 }
+
+/* Petits écrans (mobiles) */
+@media (max-width: 768px) {
+  body {
+    padding: 10px;
+  }
+
+  .app {
+    padding: 1rem;
+    border-radius: 1.5rem;
+    min-height: auto;
+  }
+
+  button {
+    font-size: 1rem;
+    padding: 0.5rem 1rem;
+    box-shadow: 0 4px 0 #b4621a;
+  }
+
+  .game-container {
+    padding: 0.8rem;
+  }
+
+  h1, h2 {
+    font-size: 1.4rem !important;
+  }
+
+  h3 {
+    font-size: 1rem !important;
+  }
+}
+
+/* Très petits écrans (moins de 480px) */
+@media (max-width: 480px) {
+  .app {
+    padding: 0.5rem;
+  }
+
+  button {
+    font-size: 0.9rem;
+    padding: 0.4rem 0.8rem;
+  }
+}
+
+
+
+
+
+
+
+
+@media (max-width: 768px) {
+  [style*="font-size: 3rem"] {
+    font-size: 2rem !important;
+  }
+  [style*="padding: 1rem"] {
+    padding: 0.5rem !important;
+  }
+}

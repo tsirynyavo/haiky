@@ -108,29 +108,32 @@ export default function ShadowGame({ onComplete }) {
         </div>
       )}
 
-      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1rem' }}>
-        <h2>Associe chaque animal à son ombre 🌿</h2>
-        <div style={{ fontSize: '2rem', fontWeight: 'bold', color: timeLeft <= 5 ? 'red' : '#2D5A27' }}>
+      {/* En-tête : titre + chrono */}
+      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.5rem', flexWrap: 'wrap' }}>
+        <h2 style={{ fontSize: 'clamp(1rem, 4vw, 1.5rem)', margin: '0.2rem 0' }}>Associe chaque animal à son ombre 🌿</h2>
+        <div style={{ fontSize: 'clamp(1.2rem, 5vw, 1.8rem)', fontWeight: 'bold', color: timeLeft <= 5 ? 'red' : '#2D5A27' }}>
           ⏱️ {timeLeft}s
         </div>
       </div>
 
-      <div style={{ display: 'flex', gap: '2rem', justifyContent: 'center', flexWrap: 'wrap', margin: '2rem 0' }}>
+      {/* Conteneur principal des deux colonnes : marges réduites */}
+      <div style={{ display: 'flex', gap: 'clamp(1rem, 3vw, 2rem)', justifyContent: 'center', flexWrap: 'wrap', margin: '0.5rem 0' }}>
+        {/* Colonne Animaux */}
         <div>
-          <h3>Les animaux</h3>
-          <div style={{ display: 'flex', gap: '1rem', marginTop: '1rem', flexWrap: 'wrap' }}>
+          <h3 style={{ fontSize: 'clamp(1rem, 4vw, 1.3rem)' }}>Les animaux</h3>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(65px, auto))', gap: '0.8rem', justifyContent: 'center', marginTop: '0.5rem' }}>
             {animals.map(animal => (
               <div
                 key={animal.id}
                 onClick={() => handleAnimalClick(animal.id)}
                 style={{
                   background: matched[animal.id] ? '#c8e6c9' : '#f0f0f0',
-                  padding: '1rem',
                   borderRadius: '1rem',
                   cursor: (matched[animal.id] || !gameActive) ? 'default' : 'pointer',
                   border: selectedAnimal === animal.id ? '4px solid #ff9800' : 'none',
                   opacity: matched[animal.id] ? 0.6 : 1,
-                  fontSize: '3rem',
+                  padding: 'clamp(0.3rem, 1.5vw, 0.6rem)',
+                  fontSize: 'clamp(1.5rem, 5vw, 2.2rem)',
                   textAlign: 'center'
                 }}
               >
@@ -140,9 +143,10 @@ export default function ShadowGame({ onComplete }) {
           </div>
         </div>
 
+        {/* Colonne Ombres */}
         <div>
-          <h3>Les ombres</h3>
-          <div style={{ display: 'flex', gap: '1rem', marginTop: '1rem', flexWrap: 'wrap' }}>
+          <h3 style={{ fontSize: 'clamp(1rem, 4vw, 1.3rem)' }}>Les ombres</h3>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(65px, auto))', gap: '0.8rem', justifyContent: 'center', marginTop: '0.5rem' }}>
             {shuffledShadows.map(shadowAnimalId => {
               const animal = animals.find(a => a.id === shadowAnimalId)
               return (
@@ -151,10 +155,10 @@ export default function ShadowGame({ onComplete }) {
                   onClick={() => handleShadowClick(shadowAnimalId)}
                   style={{
                     background: '#ddd',
-                    padding: '1rem',
                     borderRadius: '1rem',
                     cursor: (matched[shadowAnimalId] || !gameActive) ? 'default' : 'pointer',
-                    fontSize: '3rem',
+                    padding: 'clamp(0.3rem, 1.5vw, 0.6rem)',
+                    fontSize: 'clamp(1.5rem, 5vw, 2.2rem)',
                     textAlign: 'center',
                     filter: 'grayscale(100%) brightness(0.6)',
                     opacity: matched[shadowAnimalId] ? 0.4 : 1
@@ -168,8 +172,9 @@ export default function ShadowGame({ onComplete }) {
         </div>
       </div>
 
+      {/* Bouton et aide */}
       <Button onClick={resetGame}>Recommencer</Button>
-      <p style={{ marginTop: '1rem', fontSize: '1.2rem' }}>
+      <p style={{ marginTop: '0.5rem', fontSize: 'clamp(0.8rem, 3vw, 1rem)' }}>
         {selectedAnimal ? 'Clique sur son ombre' : 'Clique d’abord sur un animal'}
       </p>
     </div>
